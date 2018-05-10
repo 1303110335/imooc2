@@ -1,0 +1,60 @@
+server.port: 8071
+spring:
+  redis:
+    database: 0
+    host: 192.168.33.10
+    password: root
+    port: 6379
+
+
+############################################################
+#
+# mybatis 配置
+#
+############################################################
+# mybatis 配置
+#DataSource
+##数据库驱动
+#jdbc:
+#  driver: com.mysql.jdbc.Driver
+##数据库链接
+#  url: jdbc:mysql://192.168.33.10:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false
+##数据库用户名
+#  username: root
+##数据库密码
+#  password: 123456
+#
+##Mybatis
+#mybatis_config_file:  mybatis-config.xml
+#mapper_path: /mapper/**.xml
+#type_alias_package: com.imooc2.demo2.entity
+
+
+spring:
+  datasource:
+  type: com.alibaba.druid.pool.DruidDataSource
+  url: jdbc:mysql://192.168.33.10:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false
+  username: root
+  password: 123456
+  driverClassName: com.mysql.jdbc.Driver
+
+  #连接池的配置信息
+  initialSize: 5
+  minIdle: 5
+  maxActive: 20
+  maxWait: 60000
+  timeBetweenEvictionRunsMillis: 60000
+  minEvictableIdleTimeMillis: 300000
+  validationQuery: SELECT 1 FROM DUAL
+  testWhileIdle: true
+  testOnBorrow: false
+  testOnReturn: false
+  poolPreparedStatements: true
+  maxPoolPreparedStatementPerConnectionSize: 20
+  filters: stat,wall,log4j
+  connectionProperties: druid.stat.mergeSql: true;druid.stat.slowSqlMillis: 5000
+
+  # MyBatis 配置
+  mybatis:
+    mapper-locations: classpath:mapper/*.xml
+    type-aliases-package: com.imooc2.demo2.entity
